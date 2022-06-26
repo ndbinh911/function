@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Số nguyên tố nhỏ hơn 10000: <span id="demo"></span></div>
+    <script>
+        let primeNumber = document.getElementById('demo');
+        primeNumber.innerHTML = '2, 3, 5, 7,'
+        function isPrime(number) {
+            for(let i = 10; i < number; i++) {
+                if ((i % 2 != 0) && (i % 3 != 0) && (i % 5 != 0) && (i % 7 != 0)) {
+                    primeNumber.innerHTML += i + ', ';
+                }
+            }
+        }
+        isPrime(10000);
+    </script>
+</body>
+</html>
