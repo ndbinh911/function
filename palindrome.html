@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let text = prompt('Kiểm tra từ đối xứng');
+        // let text = 'redder';
+        function isPalindrome(input) {
+            let arr = input.split('');
+            let i = 1;
+            let j = arr.length - 2;
+            if (arr[0] == arr[arr.length - 1]) {
+                do {
+                    if (arr[j] == arr[i]) {
+                        console.log('true')
+                    } else {
+                        alert('false');
+                        return;
+                    }
+                    i++;
+                    j--;
+                } while (i < arr.length/2 && j > ((arr.length/2)-1))
+                alert('true');
+                return;
+            }
+            alert('false');
+        }
+        isPalindrome(text);
+    </script>
+</body>
+</html>
