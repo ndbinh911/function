@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[*Bài tập] Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+    <style>
+        #container {
+            max-width: 856px;
+            margin-inline: auto;
+        }
+
+        .add_product {
+            background-color: #f2f2f2;
+            border-radius: 6px;
+            display: inline-block;
+            padding: 28px;
+        }
+
+        #new_product {
+            width: 322px;
+            height: 32px;
+            border: 1px solid #d8d8d8;
+            border-radius: 4px;
+        }
+
+        #add {
+            color: #fff;
+            background-color: #50af50;
+            border: none;
+            border-radius: 4px;
+            width: 62px;
+            height: 36px;
+        }
+
+        #add:hover,
+        .edit:hover,
+        .del:hover {
+            cursor: pointer;
+            background-color: rgba(80, 175, 80, 0.9);
+        }
+
+        #product_name {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #count {
+            color: #a52a2a;
+        }
+
+        .list_product {}
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 14px;
+            line-height: 34px;
+        }
+
+        .edit {
+            color: #fff;
+            width: 58px;
+            height: 34px;
+            background-color: #50af50;
+            border: none;
+            border-radius: 4px;
+            margin-left: 84px;
+        }
+
+        .del {
+            color: #fff;
+            width: 68px;
+            height: 34px;
+            margin-right: 110px;
+            background-color: #50af50;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h3>Add New Product</h3>
+        <div class="add_product">
+            <input id="new_product" type="text" placeholder="New Product">
+            <button id="add" onclick="addProduct(document.getElementById('new_product').value)">Add</button>
+        </div>
+        <h3>Display All Product</h3>
+        <div id="product_name">
+            <h4>Product Name</h4>
+            <h4 id="count"></h4>
+        </div>
+        <div class="all_product">
+            <div class="list_product">
+                <!-- <div class="product">
+                    <div class="name_product"></div>
+                    <button class="edit">Edit</button>
+                    <button class="del">Delete</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let count = document.getElementById('count');
+        let new_product = document.getElementById('new_product');
+        let all_product = document.getElementsByClassName('all_product');
+        let list_product = document.getElementsByClassName('list_product');
+        let product = document.getElementsByClassName('product');
+        let name_product = document.getElementsByClassName('name_product');
+        // let edit = document.getElementsByClassName('edit');
+        // let del = document.getElementsByClassName('del');
+        let add = '<div class="product"><div class="name_product"></div><button class="edit">Edit</button><button class="del">Delete</button></div>';
+        let arr = [];
+        function addProduct(name) {
+            if (new_product.value != '') {
+                arr.push(name);
+                new_product.value = '';
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr.length > 1) {
+                        count.innerHTML = arr.length + ' products';
+                    } else {
+                        count.innerHTML = arr.length + ' product';
+                    }
+                    list_product[i].innerHTML = add;
+                    // name_product[i].innerHTML = arr[i];
+                    // console.log(name_product[i].value);
+                }
+                for (let j = 0; j < arr.length; j++) {
+                    console.log(arr[j])
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
