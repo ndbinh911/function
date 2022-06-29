@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num1 = parseFloat(prompt('Nhập vào tham số thứ 1: '));
+        let num2 = parseFloat(prompt('Nhập vào tham số thứ 2: '));
+        function isParam(param1, param2) {
+            if (num1 > num2) {
+                alert('Tham số thứ 1 lớn hơn tham số thứ 2');
+            } else if (num1 < num2) {
+                alert('Tổng của 2 tham số: ' + (num1 + num2));
+            }
+        }
+        isParam(num1, num2);
+    </script>
+</body>
+</html>

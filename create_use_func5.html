@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><input type="number" oninput="intNum(this.value)"></div>
+    <div><span id="demo1"></span><span id="demo2"></span></div>
+
+    <script>
+        function intNum(number) {
+            let demo1 = document.getElementById('demo1').innerHTML = 'Giai thừa của ' + number + ' là ';
+            let demo2 = document.getElementById('demo2');
+            let num = parseInt(number);
+            let i =0;
+            for (num; num > 0; num--) {
+                i += num;
+                demo2.innerHTML = i;
+            }
+        }
+    </script>
+</body>
+</html>
