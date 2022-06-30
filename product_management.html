@@ -51,7 +51,9 @@
             color: #a52a2a;
         }
 
-        .list_product {}
+        .list_product {
+            width: 100%;
+        }
 
         .product {
             display: flex;
@@ -67,18 +69,48 @@
             background-color: #50af50;
             border: none;
             border-radius: 4px;
-            margin-left: 84px;
         }
 
         .del {
             color: #fff;
             width: 68px;
             height: 34px;
-            margin-right: 110px;
             background-color: #50af50;
             border: none;
             border-radius: 4px;
         }
+
+        table,
+        td {
+            border-spacing: 0;
+            width: 40.3333%;
+            /* border: 1px solid; */
+        }
+
+        table tr td:first-child {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        table tr td:last-child {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        td {
+            padding: 8px 0 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+         .name_product {
+            margin-left: 20px;
+         }
     </style>
 </head>
 
@@ -95,13 +127,40 @@
             <h4 id="count"></h4>
         </div>
         <div class="all_product">
-            <div class="list_product">
-                <!-- <div class="product">
-                    <div class="name_product"></div>
-                    <button class="edit">Edit</button>
-                    <button class="del">Delete</button>
+            <table class="list_product">
+                <!-- <tr>
+                    <td>
+                        <div class="name_product">Sony Xperia</div>
+                    </td>
+                    <td><button class="edit" onclick="editProduct(name_product[0])">Edit</button></td>
+                    <td><button class="del">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="name_product">Nokia</div>
+                    </td>
+                    <td><button class="edit" onclick="editProduct(name_product[1])">Edit</button></td>
+                    <td><button class="del">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="name_product">Xiaomi</div>
+                    </td>
+                    <td><button class="edit" onclick="editProduct(name_product[2])">Edit</button></td>
+                    <td><button class="del">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="name_product">Iphone</div>
+                    </td>
+                    <td><button class="edit" onclick="editProduct(name_product[3])">Edit</button></td>
+                    <td><button class="del">Delete</button></td>
+                </tr> -->
+            </table>
+            <!-- <div> -->
+            <!-- <div class="product">
                 </div> -->
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 
@@ -112,9 +171,10 @@
         let list_product = document.getElementsByClassName('list_product');
         let product = document.getElementsByClassName('product');
         let name_product = document.getElementsByClassName('name_product');
-        // let edit = document.getElementsByClassName('edit');
-        // let del = document.getElementsByClassName('del');
-        let add = '<div class="product"><div class="name_product"></div><button class="edit">Edit</button><button class="del">Delete</button></div>';
+        let edit = document.getElementsByClassName('edit');
+        let del = document.getElementsByClassName('del');
+        let tr = document.getElementsByClassName('tr');
+        let add = '<tr class="tr"><td><div class="name_product"></div></td><td><button class="edit">Edit</button></td><td><button class="del">Delete</button></td></tr>';
         let arr = [];
         function addProduct(name) {
             if (new_product.value != '') {
@@ -126,14 +186,38 @@
                     } else {
                         count.innerHTML = arr.length + ' product';
                     }
-                    list_product[i].innerHTML += add;
-                    name_product[i].innerHTML = arr[i];
-                    // console.log(name_product[i].value);
                 }
-                for (let j = 0; j < arr.length; j++) {
-                    console.log(arr[j])
-                }
+                list_product[0].innerHTML = render(arr);
+                return arr;
             }
+        }
+
+        function render(arr) {
+            let s = '';
+            for (let i = 0; i < arr.length; i++) {
+                s += add;
+            }
+            setTimeout(function onload() {
+                for (let i = 0; i < arr.length; i++) {
+                    name_product[i].innerHTML = arr[i];
+                    edit[i].onclick = function () { editProduct(name_product[i]); }
+                    del[i].onclick = function () { delProduct(i, arr, tr[i]); }
+                    // edit[i].addEventListener('click', function(){ editProduct(name_product[i]);}, false);
+                }
+            }, 0);
+            return s;
+        }
+
+        function editProduct(name) {
+            let nameNewProduct = prompt("Nhập tên mặt hàng thay thế: ");
+            name.innerHTML = nameNewProduct;
+        }
+
+        function delProduct(index, array, row) {
+            array.splice(index, 1);
+            row.remove();
+            addProduct(name);
+            render(arr);
         }
     </script>
 </body>
